@@ -194,6 +194,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admins\introducesController.cs" />
     <Compile Include="Controllers\Admins\StaffsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
@@ -7249,6 +7250,11 @@
     <Content Include="Views\Staffs\Details.cshtml" />
     <Content Include="Views\Staffs\Edit.cshtml" />
     <Content Include="Views\Staffs\Index.cshtml" />
+    <Content Include="Views\introduces\Create.cshtml" />
+    <Content Include="Views\introduces\Delete.cshtml" />
+    <Content Include="Views\introduces\Details.cshtml" />
+    <Content Include="Views\introduces\Edit.cshtml" />
+    <Content Include="Views\introduces\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

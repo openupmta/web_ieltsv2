@@ -25,6 +25,7 @@ namespace coderush.Controllers.Admins
         }
 
         // GET: Staffs/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,6 +41,7 @@ namespace coderush.Controllers.Admins
         }
 
         // GET: Staffs/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.group_role_id = new SelectList(db.group_role, "gr_id", "gr_name");
@@ -82,6 +84,7 @@ namespace coderush.Controllers.Admins
         }
 
         // GET: Staffs/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -118,6 +121,7 @@ namespace coderush.Controllers.Admins
         }
 
         // GET: Staffs/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             staff staff = db.staffs.Find(id);
