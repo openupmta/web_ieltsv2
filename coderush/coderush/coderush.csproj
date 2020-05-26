@@ -194,7 +194,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\Admins\introducesController.cs" />
+    <Compile Include="Controllers\Admins\CategoryLibrarysController.cs" />
+    <Compile Include="Controllers\Admins\IntroducesController.cs" />
     <Compile Include="Controllers\Admins\StaffsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
@@ -7246,15 +7247,17 @@
     <Content Include="Views\UIElement\Modal.cshtml" />
     <Content Include="Views\Widget\Index.cshtml" />
     <Content Include="Views\Staffs\Create.cshtml" />
-    <Content Include="Views\Staffs\Delete.cshtml" />
     <Content Include="Views\Staffs\Details.cshtml" />
     <Content Include="Views\Staffs\Edit.cshtml" />
     <Content Include="Views\Staffs\Index.cshtml" />
-    <Content Include="Views\introduces\Create.cshtml" />
-    <Content Include="Views\introduces\Delete.cshtml" />
-    <Content Include="Views\introduces\Details.cshtml" />
-    <Content Include="Views\introduces\Edit.cshtml" />
-    <Content Include="Views\introduces\Index.cshtml" />
+    <Content Include="Views\Introduces\Create.cshtml" />
+    <Content Include="Views\Introduces\Details.cshtml" />
+    <Content Include="Views\Introduces\Edit.cshtml" />
+    <Content Include="Views\Introduces\Index.cshtml" />
+    <Content Include="Views\CategoryLibrarys\Create.cshtml" />
+    <Content Include="Views\CategoryLibrarys\Edit.cshtml" />
+    <Content Include="Views\CategoryLibrarys\Index.cshtml" />
+    <Content Include="Views\CategoryLibrarys\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

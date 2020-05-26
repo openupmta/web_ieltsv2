@@ -1,10 +1,9 @@
-﻿@model IEnumerable<coderush.Models.introduce>
+﻿@model IEnumerable<coderush.Models.category_librarys>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Adminlte.cshtml";
 }
-
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -28,7 +27,7 @@
                     <div class="box-header">
                         <h3 class="box-title">Danh sách giới thiệu  </h3>
                         <button type="button" class="btn btn-warning" style="float:right">
-                            @Html.ActionLink("Thêm giới thiệu ", "Create", "introduces")
+                            @Html.ActionLink("Thêm giới thiệu ", "Create", "CategoryLibrarys")
                         </button>
 
                     </div>
@@ -38,73 +37,52 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.in_logo)
+                                        @Html.DisplayNameFor(model => model.ca_name)
+                                    </th>
+                                   
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ca_icon)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.in_address)
+                                        @Html.DisplayNameFor(model => model.ca_status)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.in_phone)
+                                        @Html.DisplayNameFor(model => model.ca_created_at)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.in_email)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.in_facebook)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.in_title)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.in_content)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.in_created_at)
-                                    </th>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.in_updated_at)
+                                        @Html.DisplayNameFor(model => model.ca_updated_at)
                                     </th>
                                     <th></th>
 
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach (var item in Model)
                                 {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_logo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_address)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_phone)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_email)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_facebook)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_title)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_content)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_created_at)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.in_updated_at)
-                                    </td>
-                                    <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.in_id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.in_id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.in_id }, new { onclick = "return confirm('Are you sure?');" })
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ca_name)
+                                        </td>
+                                        
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ca_icon)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ca_status)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ca_created_at)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ca_updated_at)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ca_id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.ca_id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ca_id }, new { onclick = "return confirm('Are you sure?');" })
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
 

@@ -1,21 +1,22 @@
-﻿@model coderush.Models.introduce
+﻿@model coderush.Models.category_librarys
 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Adminlte.cshtml";
 }
 
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Chi tiết giới thiệu
-            <small>giới thiệu</small>
+            Chi tiết thể loại
+            <small>thể loại</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Forms</a></li>
-            <li class="active">General Elements</li>
+            <li><a href="#">Thể loại </a></li>
+            <li class="active">Chi tiết</li>
         </ol>
     </section>
 
@@ -28,7 +29,7 @@
                         <h3 class="box-title" style="font-weight:100">Chi tiết nhóm</h3>
                         <div style="float:right">
                             <button type="button" class="btn btn-warning">
-                                @Html.ActionLink("Edit", "Edit", new { id = Model.in_id })
+                                @Html.ActionLink("Edit", "Edit", new { id = Model.ca_id })
                             </button>
                             <button type="button" class="btn btn-warning" style="margin-right: auto">
                                 @Html.ActionLink("Back to List", "Index")
@@ -39,76 +40,45 @@
                     <div class="box-body">
                         <dl class="dl-horizontal">
                             <dt>
-                                @Html.DisplayNameFor(model => model.in_logo)
+                                @Html.DisplayNameFor(model => model.ca_name)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.in_logo)
+                                @Html.DisplayFor(model => model.ca_name)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.in_address)
+                                @Html.DisplayNameFor(model => model.ca_icon)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.in_address)
+                                @Html.DisplayFor(model => model.ca_icon)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.in_phone)
+                                @Html.DisplayNameFor(model => model.ca_status)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.in_phone)
+                                @Html.DisplayFor(model => model.ca_status)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.in_email)
+                                @Html.DisplayNameFor(model => model.ca_created_at)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.in_email)
+                                @Html.DisplayFor(model => model.ca_created_at)
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.in_facebook)
+                                @Html.DisplayNameFor(model => model.ca_updated_at)
                             </dt>
 
                             <dd>
-                                @Html.DisplayFor(model => model.in_facebook)
+                                @Html.DisplayFor(model => model.ca_updated_at)
                             </dd>
 
-                            <dt>
-                                @Html.DisplayNameFor(model => model.in_title)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.in_title)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.in_content)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.in_content)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.in_created_at)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.in_created_at)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.in_updated_at)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.in_updated_at)
-                            </dd>
 
                         </dl>
                     </div>
@@ -180,3 +150,4 @@
             })
         })</script>
 }
+
