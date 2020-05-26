@@ -1,21 +1,20 @@
-﻿@model coderush.Models.staff
+﻿@model coderush.Models.introduce
 
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Adminlte.cshtml";
 }
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Sửa nhân sự
-            <small>Nhân sự</small>
+            Sửa Giới thiệu 
+            <small>Giới thiệu </small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Nhân sự</a></li>
+            <li><a href="#">Giới thiệu </a></li>
             <li class="active">Sửa</li>
         </ol>
     </section>
@@ -27,7 +26,7 @@
                 <!-- general form elements -->
                 <div class="box box-primary">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Thêm nhân sự</h3>
+                        <h3 class="box-title">Thêm Giới thiệu </h3>
                         <button type="button" class="btn btn-warning" style="float:right">
                             @Html.ActionLink("Danh sách", "Index")
                         </button>
@@ -39,58 +38,67 @@
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                           
+                            
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.sta_id)
-
+                            @Html.HiddenFor(model => model.in_id)
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.sta_fullname, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.in_logo, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sta_fullname, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sta_fullname, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.sta_username, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sta_username, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sta_username, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.in_logo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_logo, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.sta_password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.in_address, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sta_password, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sta_password, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.sta_email, htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sta_email, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sta_email, "", new { @class = "text-danger" })
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.group_role_id, "Nhóm quyền", htmlAttributes: new { @class = "control-label col-md-2" })
-                                <div class="col-md-10">
-                                    @Html.DropDownList("group_role_id", null, htmlAttributes: new { @class = "form-control" })
-                                    @Html.ValidationMessageFor(model => model.group_role_id, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.in_address, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_address, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                @Html.LabelFor(model => model.sta_image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.in_phone, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.sta_image, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.sta_image, "", new { @class = "text-danger" })
+                                    @Html.EditorFor(model => model.in_phone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_phone, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.in_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.in_email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.in_facebook, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.in_facebook, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_facebook, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.in_title, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.in_title, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_title, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.in_content, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.in_content, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.in_content, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                           
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Save" class="btn btn-default" />
@@ -212,75 +220,8 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Content/adminlte/dist/js/demo.js"></script>
     <!-- Page script -->
-    <script>
-        $(function () {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-            //Datemask dd/mm/yyyy
-            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-            //Datemask2 mm/dd/yyyy
-            $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
-            //Money Euro
-            $('[data-mask]').inputmask()
-
-            //Date range picker
-            $('#reservation').daterangepicker()
-            //Date range picker with time picker
-            $('#reservationtime').daterangepicker({ timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A' })
-            //Date range as a button
-            $('#daterange-btn').daterangepicker(
-                {
-                    ranges: {
-                        'Today': [moment(), moment()],
-                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                    },
-                    startDate: moment().subtract(29, 'days'),
-                    endDate: moment()
-                },
-                function (start, end) {
-                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-                }
-            )
-
-            //Date picker
-            $('#datepicker').datepicker({
-                autoclose: true
-            })
-            $('#datepicker_cmt').datepicker({
-                autoclose: true
-            })
-
-            //iCheck for checkbox and radio inputs
-            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass: 'iradio_minimal-blue'
-            })
-            //Red color scheme for iCheck
-            $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-                checkboxClass: 'icheckbox_minimal-red',
-                radioClass: 'iradio_minimal-red'
-            })
-            //Flat red color scheme for iCheck
-            $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-                checkboxClass: 'icheckbox_flat-green',
-                radioClass: 'iradio_flat-green'
-            })
-
-            //Colorpicker
-            $('.my-colorpicker1').colorpicker()
-            //color picker with addon
-            $('.my-colorpicker2').colorpicker()
-
-            //Timepicker
-            $('.timepicker').timepicker({
-                showInputs: false
-            })
-        })</script>
+   
 })
+
 
 
