@@ -1,0 +1,82 @@
+﻿@model IEnumerable<coderush.Models.course>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.staff.sta_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_slug)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_content)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_created_at)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.co_updated_at)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.staff.sta_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_slug)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_image)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_created_at)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.co_updated_at)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.co_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.co_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.co_id })
+        </td>
+    </tr>
+}
+
+</table>

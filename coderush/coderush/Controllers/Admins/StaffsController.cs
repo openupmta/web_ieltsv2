@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using coderush.Models;
 using Common;
+using Microsoft.AspNet.Identity;
 
 namespace coderush.Controllers.Admins
 {
@@ -59,17 +60,24 @@ namespace coderush.Controllers.Admins
             {
                 try
                 {
+                    if (Check_UserName(staff.sta_username,null))
+                    {
+                        ModelState.AddModelError(string.Empty, "Tên tài khoản không được trùng");
+                        ViewBag.group_role_id = new SelectList(db.group_role, "gr_id", "gr_name", staff.group_role_id);
+                        return View(staff);
+                    }
                     staff.sta_fullname = staff.sta_fullname.Trim();
                     staff.sta_email = staff.sta_email.Trim();
                     staff.sta_created_at = DateTime.Now;
                     db.staffs.Add(staff);
-                    db.SaveChanges();
-                
                     string content = System.IO.File.ReadAllText("D:/Ki2Nam3/CNWeb/ASP.NET MVC 5 - Template - AdminLTE/coderush/Common/Template/sendmail.html");
                     content = content.Replace("{{Username}}", staff.sta_username);
                     content = content.Replace("{{Password}}", staff.sta_password);
 
                     new MailHelper().SendMail(staff.sta_email, "Thông tin tài khoản", content);
+                    db.SaveChanges();
+                
+                    
                 }
                 catch (Exception ex)
                 {
@@ -129,6 +137,27 @@ namespace coderush.Controllers.Admins
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        #region [Check_Duplicate]
+        private bool Check_UserName(string name, int? sta_id = null)
+        {
+            bool results = true;
+            if(sta_id == null)
+            {
+                var user = db.staffs.Where(x => x.sta_fullname.Trim().ToLower().Equals(name.Trim().ToLower())).FirstOrDefault();
+                if (user == null) results =  true;
+                else results =  false;
+            }
+            else
+            {
+                List<staff> list_staff = db.staffs.ToList();
+                staff temp = db.staffs.Find(sta_id);
+                list_staff.Remove(temp);
+                bool res = list_staff.Exists(x => x.sta_fullname.Trim().ToLower().Equals(name.Trim().ToLower()));
+                results = res;
+            }
+            return results;
+        }
+        #endregion
 
         protected override void Dispose(bool disposing)
         {
