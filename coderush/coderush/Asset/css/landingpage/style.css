@@ -1,0 +1,15 @@
+@media (min-width: 768px) {
+    .ladi-section .ladi-container {
+        width: 960px;
+    }
+}
+
+@media (max-width: 767px) {
+    .ladi-section .ladi-container {
+        width: 420px;
+    }
+}
+
+body {
+    font-family: "Open Sans", sans-serif
+}
