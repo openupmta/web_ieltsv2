@@ -9064,7 +9064,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admins\Content\Photo\" />
+    <Folder Include="Areas\Admins\Content\Photo\Staff\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>

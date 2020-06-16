@@ -8,6 +8,12 @@ namespace coderush.Areas.Admins.Models.EF
 
     public partial class teacher
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public teacher()
+        {
+            courses = new HashSet<course>();
+        }
+
         [Key]
         public int te_id { get; set; }
 
@@ -29,6 +35,9 @@ namespace coderush.Areas.Admins.Models.EF
         public DateTime? te_updated_at { get; set; }
 
         public int? staff_id { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<course> courses { get; set; }
 
         public virtual position position { get; set; }
 

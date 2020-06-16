@@ -39,9 +39,11 @@ namespace coderush.Areas.Admins.Models.EF
 
         public int? staff_id { get; set; }
 
+        public int? teacher_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<course_customer> course_customer { get; set; }
 
-        public virtual staff staff { get; set; }
+        public virtual teacher teacher { get; set; }
     }
 }
