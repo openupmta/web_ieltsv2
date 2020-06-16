@@ -45,11 +45,13 @@ namespace coderush.Controllers.Admins
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "in_id,in_logo,in_address,in_phone,in_email,in_facebook,in_title,in_content,in_created_at,in_updated_at")] introduce introduce)
         {
             if (ModelState.IsValid)
             {
+                introduce.in_created_at = DateTime.Now;
                 db.introduces.Add(introduce);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,6 +84,7 @@ namespace coderush.Controllers.Admins
         {
             if (ModelState.IsValid)
             {
+                introduce.in_updated_at = DateTime.Now;
                 db.Entry(introduce).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
