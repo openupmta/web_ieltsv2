@@ -16,7 +16,7 @@
         }
 
         [Key]
-        [Display(Name ="Mã nhân sự")]
+        [Display(Name = "Mã nhân sự")]
         public int sta_id { get; set; }
 
         [StringLength(150)]
@@ -27,7 +27,7 @@
         [StringLength(150)]
         [Display(Name = "Tên đăng nhập")]
         [Required(ErrorMessage = "Họ và tên không được để trống")]
-        public string sta_username{ get; set; }
+        public string sta_username { get; set; }
         [StringLength(150)]
         [Display(Name = "Họ và tên ")]
         [Required(ErrorMessage = "Tên đăng nhập không được để trống")]
@@ -38,7 +38,7 @@
         [Required(ErrorMessage = "Mật khẩu không được để trống")]
         public string sta_password { get; set; }
         [Display]
-        
+
         public int? group_role_id { get; set; }
 
         [StringLength(150)]

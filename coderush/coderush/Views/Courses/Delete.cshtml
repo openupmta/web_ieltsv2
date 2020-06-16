@@ -1,0 +1,97 @@
+﻿@model coderush.Models.course
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Adminlte.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.staff.sta_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.staff.sta_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_slug)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_slug)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_created_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_created_at)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.co_updated_at)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.co_updated_at)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

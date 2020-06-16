@@ -1,0 +1,95 @@
+﻿<header class="header container-fluid"></header>
+<nav class="nav-horizontal container-fluid">
+    <div class="background-header"></div>
+    <div class="nav-horizontal-container container">
+        <div class="nav-horizontal-content">
+            <div class="d-flex justify-content-center menu">
+
+                <div class="logo">
+                    <a href="https://xuanphiielts.com">
+                        <img src="~/Asset/image/LogoABC.png" alt="logo"/>
+                    </a>
+
+                </div>
+                <ul class="nav-ul-lv-1">
+                    <li>@Html.ActionLink("Giới Thiệu","Index","GioiThieu")</li>
+                    <li>
+                        <a href="#khoahoc" id="khoahoc-li">khóa học<i class="fa fa-sort-down"></i></a>
+                        <ul class="nav-ul-lv-2">
+                            <li><a href="https://xuanphiielts.com/khoa-hoc/index.html">Offline</a></li>
+                            <li><a href="" id="khoahoc-online">Online</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#thuvien" id="library-li">Thư viện<i class="fa fa-sort-down"></i></a>
+
+                        <ul class="nav-ul-lv-2">
+                            <li><a href="https://xuanphiielts.com/thu-vien/nghe">Nghe</a></li>
+                            <li><a href="https://xuanphiielts.com/thu-vien/noi">Nói</a></li>
+                            <li><a href="https://xuanphiielts.com/thu-vien/doc-1570776859">Đọc</a></li>
+                            <li><a href="https://xuanphiielts.com/thu-vien/viet-1569851557">Viết</a></li>
+
+
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#blog" id="blog-li">chia sẻ</a>
+                    </li>
+                    <li id="contact-li"><a href="#">liên hệ</a></li>
+                </ul>
+                <ul class="nav-ul-lv-1">
+                    <li>
+                        <a target="_blank" href="https://bit.ly/IELTSofflineXuanPhi" style="    border: 3px solid #19687D;
+                            border-radius: 5px;">Đăng ký</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="menu-mobile-button"><i class="fas fa-bars"></i></div>
+        </div>
+    </div>
+</nav>
+<script type="text/javascript" src="js/nav-horizontal.js"></script>
+
+<section class="menu-mobile">
+    <div class="menu-mobile-bg"></div>
+    <div class="menu-mobile-box">
+        <div class="menu-mobile-info">
+
+        </div>
+        <div class="menu-mobile-content">
+            <div class="menu-left">
+                <div class="menu-left-title">
+                    <h3>Menu</h3>
+                </div>
+                <div class="menu-left-content">
+
+                    <ul class="menu-left-ul-lv-1">
+                        <li><a href="https://xuanphiielts.com/introduce.html">Giới thiệu</a></li>
+                        <li>
+                            <a id="course-1">khóa học</a>
+                            <i class="dau fas fa-plus"></i>
+                            <ul class="menu-left-ul-lv-child">
+                                <li><a target="_blank" href="https://edumall.vn/course/xuan-phi-ielts-mat-goc-khong-con-soc-voi-ielts.html?utm_source=teacher&amp;utm_medium=teacher_sell&amp;utm_campaign=PhiPX&amp;utm_term=0008&amp;utm_content=PhiPX.01">Online</a></li>
+                                <li><a href="https://xuanphiielts.com/khoa-hoc/index.html">Offline</a></li>
+                            </ul>
+
+                        </li>
+                        <li>
+                            <a class="hide" href="#thuvien">thư viện</a>
+
+                        </li>
+                        <li>
+                            <a class="hide" href="#blog">blog</a>
+
+                        </li>
+                        <li id=""><a class="hide" href="#contact">liên hệ</a></li>
+                    </ul>
+
+                </div>
+            </div>
+            <script type="text/javascript" src="js/menu-left-js.js"></script>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/menu-mobile.js"></script>
+</section>

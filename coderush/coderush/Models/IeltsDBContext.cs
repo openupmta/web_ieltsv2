@@ -136,10 +136,6 @@ namespace coderush.Models
                 .Property(e => e.in_title)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<introduce>()
-                .Property(e => e.in_content)
-                .IsUnicode(false);
-
             modelBuilder.Entity<library>()
                 .Property(e => e.li_slug)
                 .IsUnicode(false);
@@ -171,6 +167,10 @@ namespace coderush.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<staff>()
+                .Property(e => e.sta_username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<staff>()
                 .Property(e => e.sta_password)
                 .IsUnicode(false);
 
@@ -198,3 +198,4 @@ namespace coderush.Models
         }
     }
 }
+

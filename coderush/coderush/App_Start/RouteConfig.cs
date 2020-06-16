@@ -12,7 +12,10 @@ namespace coderush
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                name: "Admins",
+                url: "",
+                defaults: new { controller = "Staffs", action = "Index", id = UrlParameter.Optional }).DataTokens.Add("area", "Admins");
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
