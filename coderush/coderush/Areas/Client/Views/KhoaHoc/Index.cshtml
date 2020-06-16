@@ -1,0 +1,746 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Khóa Học";
+    Layout = "~/Areas/Client/Views/Shared/_LayoutMaster.cshtml";
+}
+
+<html lang="en">
+
+<head>
+    <title>Khóa học offline</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://xuanphiielts.com/images/logo/1570090061_slider_logo.jpg" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="https://xuanphiielts.com/admin_example/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://xuanphiielts.com/admin_example/bower_components/Ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://xuanphiielts.com/css/landing-page.css">
+
+    <link rel="stylesheet" href="https://xuanphiielts.com/owl-carousel/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://xuanphiielts.com/owl-carousel/owlcarousel/assets/owl.theme.default.min.css">
+
+    <link rel="stylesheet" type="text/css" href="lib/fontawesome.5.7.2/css/all.min.css">
+    <script src="https://xuanphiielts.com/js/jquery-3.4.1.min.js"></script>
+    <script src="https://xuanphiielts.com/owl-carousel/owlcarousel/owl.carousel.js"></script>
+    <script src="https://kit.fontawesome.com/2476b12f4d.js"></script>
+
+    <link rel="stylesheet" href="https://xuanphiielts.com/alertify/alertify.bootstrap.css">
+    <link rel="stylesheet" href="https://xuanphiielts.com/alertify/alertify.core.css">
+    <link rel="stylesheet" href="https://xuanphiielts.com/alertify/alertify.default.css">
+    <script src="https://xuanphiielts.com/alertify/alertify.min.js"></script>
+    <script language="javascript">
+        function check(value) {
+            if (value < 10) {
+                return '0' + value;
+            }
+            else {
+                return value;
+            }
+        }
+        $(document).ready(function () {
+            start();
+        });
+        var date = new Date();
+        var time = new Date('2020-05-12').getTime();
+        var distance = time - date.getTime();
+        var d = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1; //ngày
+
+        var h = 24 - parseInt(date.getHours()); // Giờ
+        var m = 60 - parseInt(date.getMinutes()); // Phút
+        var s = 60 - parseInt(date.getSeconds()); // Giây
+
+        var timeout = null; // Timeout
+
+        function start() {
+            if (d === null) {
+                d = 0;
+                h = 0;
+                m = 0;
+                s = 0;
+            }
+
+            if (s === -1) {
+                m -= 1;
+                s = 59;
+            }
+            if (m === -1) {
+                h -= 1;
+                m = 59;
+            }
+
+            if (h === -1) {
+                d -= 1;
+                h = 23;
+            }
+            if (d === -1) {
+                clearTimeout(timeout);
+                alert('Hết giờ');
+                return false;
+            }
+
+            document.getElementById('day-count').innerText = check(d).toString();
+            document.getElementById('hour-count').innerText = check(h).toString();
+            document.getElementById('minute-count').innerText = check(m).toString();
+            document.getElementById('second-count').innerText = check(s).toString();
+
+            timeout = setTimeout(function () {
+                s--;
+                start();
+            }, 1000);
+        }
+
+        function stop() {
+            clearTimeout(timeout);
+        }
+
+    </script>
+</head>
+
+<body style="background-color: #f4f6f8">
+    <script type="text/javascript">
+        alertify.success('Bạn đã đăng ký thành công! chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!');
+    </script>
+    <style>
+        .owl-nav {
+            position: absolute;
+            bottom: 50%;
+            font-size: 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 15px;
+        }
+    </style>
+    <section class="header-landing" style="background-image: url('https://xuanphiielts.com/image/bg1.jpg') !important;">
+        <div style="background: rgba(0,0,0,0.3)">
+
+            <div class="container-fluid">
+                <div class="container">
+                    <div class="logo" style="padding: 10px">
+                        <a href="https://xuanphiielts.com">
+                            <img src="https://xuanphiielts.com/image/logo11.png" width="150px" alt="">
+                        </a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row landing-count">
+                                <h4 class="text-landing text-uppercase">Nhanh tay lên để nhận được Ưu đãi</h4>
+                                <div class="count-count">
+                                    <div class="vu">
+                                        <h5 class="text-landing">Ngày</h5>
+                                        <span id="day-count" class="number-count" title="ngày">Ngày</span>
+                                    </div>
+                                    <div class="vu">
+                                        <h5 class="text-landing">Giờ</h5>
+                                        <span id="hour-count" class="number-count" title="giờ">Giờ</span>
+                                    </div>
+                                    <div class="vu">
+                                        <h5 class="text-landing">Phút</h5>
+                                        <span id="minute-count" class="number-count" title="phút">Phút</span>
+                                    </div>
+                                    <div class="vu">
+                                        <h5 class="text-landing">Giây</h5>
+                                        <span id="second-count" class="number-count" title="giây">Giây</span>
+                                    </div>
+                                </div>
+                                <div class="count-form col-12 col-lg-12 col-sm-12 col-md-12">
+                                    <form action="https://xuanphiielts.com/information" method="post">
+                                        <input type="hidden" name="_token" value="czYBUu5yTJNAC78lShw1Sfli0wUKQ4KGgIyNATnb">                                    <input type="text" class="count-input" name="name" required placeholder="Họ và tên" value="" />
+                                        <input type="text" class="count-input" name="email" required placeholder="Nhập Email" value="" />
+                                        <input type="text" class="count-input" name="phone" required placeholder="Nhập Sô điện thoại" value="" />
+                                        <input type="submit" value="GỬI LIÊN HỆ TỚI CHÚNG TÔI">
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="landing-offline">
+                                <h3 class="title-ss" style="color: white">
+                                    HỌC OFFLINE TRỰC TIẾP<br> <span style="text-align: center">
+                                        CÙNG
+                                        XUÂN PHI IELTS
+                                    </span>
+                                </h3>
+
+                            </div>
+                            <hr>
+                            <div class="landing-dangky">
+                                <a target="_blank" class="btn btn-dangky" href="https://bit.ly/IELTSofflineXuanPhi">
+                                    Đăng
+                                    Ký
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-12 col-lg-12 col-md-12 landing-infor">
+                        <div class="row">
+                            <div class="col-md-3 hihi d-flex">
+                                <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                <span>
+                                    <strong>Hotline:</strong><br>
+                                    <span>0916300750</span>
+                                </span>
+                            </div>
+                            <div class="col-md-6 hihi d-flex">
+                                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                <span>
+                                    <strong>Địa chỉ :</strong><br>
+                                    <span>Tòa nhà Dream House, số 63, ngõ 136 Chùa Láng, Quận Đống Đa, Hà Nội</span>
+                                </span>
+                            </div>
+                            <div class="col-md-3 hihi d-flex">
+                                <i class="fab fa-facebook-square"></i>
+                                <span>
+                                    <strong>Facebook:</strong><br>
+                                    <span><a style="color : black" target="_blank" href="https://www.facebook.com/phamxuan.phi">Xuân Phi</a></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="landing-lydo">
+        <h1 class="desktop">4 Lý do chọn Xuân Phi IELTS</h1>
+        <h3 class="mobile">4 Lý do chọn Xuân Phi IELTS</h3>
+        <div class="container">
+            <div class="row" style="text-align: center">
+                <div class="col-md-3 item-lydo">
+                    <div class="lydo">
+                        <img src="https://xuanphiielts.com//image/offline1.png" width="150px" alt="">
+                        <h4>Chương trình cá nhân hoá</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 item-lydo">
+                    <div class="lydo">
+                        <img src="https://xuanphiielts.com//image/offline2.png" width="150px" alt="">
+                        <h4>Giảng viên tận tâm</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 item-lydo">
+                    <div class="lydo">
+                        <img src="https://xuanphiielts.com//image/offline3.png" width="150px" alt="">
+                        <h4>Truyền đạt dễ hiểu</h4>
+
+                    </div>
+                </div>
+                <div class="col-md-3 item-lydo">
+                    <div class="lydo">
+                        <img src="https://xuanphiielts.com//image/offline4.png" width="150px" alt="">
+                        <h4>Tài liệu cập nhật</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-khoahoc">
+        <div class="container-fluid container-kh">
+            <div class="khoahoc">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="https://xuanphiielts.com/images/course_offlines/oJ4D_image_cây-01.png" alt="" width="100%"
+                             height="100%">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>KHOÁ RỄ</h3>
+                        <h4 style="text-align:center"><span style="font-size:20px"><big>Pre-IELTS level 0</big></span></h4>
+
+                        <p><big>1. ĐỐI TƯỢNG</big></p>
+
+                        <ul>
+                            <li><big>Tr&igrave;nh độ Beginner English</big></li>
+                            <li><big>Kh&ocirc;ng sử dụng tiếng Anh trong 6 th&aacute;ng gần đ&acirc;y</big></li>
+                            <li><big>Ph&aacute;t &acirc;m yếu</big></li>
+                            <li><big>Chưa c&oacute; khả năng Nghe-N&oacute;i, giao tiếp tiếng Anh</big></li>
+                        </ul>
+
+                        <p><big>2. MỤC TI&Ecirc;U</big></p>
+
+                        <ul>
+                            <li><big>C&oacute; kỹ năng ph&aacute;t &acirc;m tiếng Anh tốt</big></li>
+                            <li><big>C&oacute; kỹ năng Nghe-Hiểu tốt c&aacute;c nội dung đơn giản</big></li>
+                            <li><big>C&oacute; khả năng giao tiếp tiếng Anh cơ bản trong đời sống</big></li>
+                            <li><big>Tr&igrave;nh độ tương đương 4.0-4.5 IELTS</big></li>
+                        </ul>
+
+                        <p><big>3. TH&Ocirc;NG TIN KHO&Aacute; HỌC</big></p>
+
+                        <ul>
+                            <li><big>Thời lượng: 20 buổi</big></li>
+                            <li><big>Thời gian: 2 buổi/tuần; 2 giờ/buổi; 19.00-21.00 c&aacute;c buổi tối&nbsp;</big></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid kh2">
+                <div class="khoahoc container-kh kh2">
+                    <div class="row">
+
+                        <div class="col-md-6 order-0">
+                            <h3>KHOÁ GỐC</h3>
+                            <h4 style="text-align:center"><big>Pre-IELTS level 1</big></h4>
+
+                            <p><big>1. ĐỐI TƯỢNG:</big></p>
+
+                            <ul>
+                                <li><big>Tr&igrave;nh độ tương đương Beginner - Elementary</big></li>
+                                <li><big>Ngữ ph&aacute;p v&agrave; ph&aacute;t &acirc;m c&ograve;n yếu</big></li>
+                                <li><big>Vốn từ vựng c&ograve;n rất hạn chế</big></li>
+                                <li><big>Phản xạ n&oacute;i chậm</big></li>
+                                <li><big>Chưa c&oacute; khả năng sử dụng cấu tr&uacute;c c&acirc;u, ph&aacute;t triển &yacute; một c&aacute;ch hợp l&yacute;</big></li>
+                            </ul>
+
+                            <p><big>2. MỤC TI&Ecirc;U:</big></p>
+
+                            <ul>
+                                <li><big>C&oacute; khả năng Nghe - N&oacute;i tiếng Anh kh&aacute;</big></li>
+                                <li><big>Vốn từ vựng phong ph&uacute; phục vụ giao tiếp</big></li>
+                                <li><big>C&oacute; thể n&oacute;i được c&aacute;c c&acirc;u liền mạch theo phản xạ</big></li>
+                                <li><big>Nắm v&agrave; sử dụng được ngữ ph&aacute;p cơ bản</big></li>
+                                <li><big>Tr&igrave;nh độ tương đương 5.0 - 5.5 IELTS</big></li>
+                            </ul>
+
+                            <p><big>3. TH&Ocirc;NG TIN KHO&Aacute; HỌC:</big></p>
+
+                            <ul>
+                                <li><big>Thời lượng: 20 buổi</big></li>
+                                <li><big>Thời gian: 2 buổi/tuần; 2 giờ/buổi; 19.00-21.00 c&aacute;c buổi tối</big></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 order-1">
+                            <img src="https://xuanphiielts.com/images/course_offlines/bPhY_image_cây-02.png" alt=""
+                                 width="100%" height="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid container-kh">
+                <div class="khoahoc">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://xuanphiielts.com/images/course_offlines/GuhQ_image_cây-03.png" alt=""
+                                 width="100%" height="100%">
+                        </div>
+                        <div class="col-md-6">
+                            <h3>KHOÁ THÂN</h3>
+                            <h4 style="text-align:center"><big>Pre-IELTS level 2</big></h4>
+
+                            <p><big>1. ĐỐI TƯỢNG:</big></p>
+
+                            <ul>
+                                <li><big>Đ&atilde; c&oacute; khả năng tiếng Anh cơ bản</big></li>
+                                <li><big>C&aacute;c kỹ năng Nghe-Đọc c&ograve;n chậm, vốn từ hạn chế</big></li>
+                                <li><big>Phản xạ N&oacute;i chậm, chưa biết c&aacute;ch viết luận tiếng Anh</big></li>
+                            </ul>
+
+                            <p><big>2. MỤC TIỂU:</big></p>
+
+                            <ul>
+                                <li><big>C&oacute; phản xạ Nghe-N&oacute;i trực tiếp tiếng Anh kh&ocirc;ng th&ocirc;ng qua tiếng Việt</big></li>
+                                <li><big>Tự tin giao tiếp sử dụng tiếng Anh trong m&ocirc;i trường l&agrave;m việc</big></li>
+                                <li><big>Nắm vững v&agrave; th&agrave;nh thạo 50% dạng b&agrave;i IELTS Listening v&agrave; Reading</big></li>
+                                <li><big>Tự tin với IELTS Speaking Part 1 v&agrave; Part 2</big></li>
+                                <li><big>Tr&igrave;nh độ tương đương 5.5-6.0 IELTS</big></li>
+                            </ul>
+
+                            <p><big>3. TH&Ocirc;NG TIN KHO&Aacute; HỌC:</big></p>
+
+                            <ul>
+                                <li><big>Thời lượng: 20 buổi</big></li>
+                                <li><big>Thời gian: 2 buổi/tuần; 2 giờ/buổi; 19.00-21.00 c&aacute;c buổi tối</big></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid kh2">
+                <div class="khoahoc container-kh kh2">
+                    <div class="row">
+
+                        <div class="col-md-6 order-0">
+                            <h3>KHOÁ NGỌN</h3>
+                            <h4 style="text-align:center"><big>IELTS Intensive</big></h4>
+
+                            <p><big>1. ĐỐI TƯỢNG:</big></p>
+
+                            <ul>
+                                <li><big>Đ&atilde; c&oacute; thể giao tiếp cơ bản bằng tiếng Anh</big></li>
+                                <li><big>Kỹ năng viết c&ograve;n chậm, chưa viết được b&agrave;i luận học thuật ho&agrave;n chỉnh</big></li>
+                                <li><big>Vốn từ vựng học thuật v&agrave; n&acirc;ng cao c&ograve;n hạn chế</big></li>
+                                <li><big>C&oacute; định hướng thi IELTS r&otilde; r&agrave;ng</big></li>
+                            </ul>
+
+                            <p><big>2. MỤC TI&Ecirc;U</big></p>
+
+                            <ul>
+                                <li><big>Được trang bị đầy đủ c&aacute;c kỹ năng v&agrave; kiến thức cho IELTS 4 kỹ năng</big></li>
+                                <li><big>Nắm vững chiến thuật l&agrave;m b&agrave;i IELTS Reading v&agrave; Listening</big></li>
+                                <li><big>C&oacute; khả năng ph&aacute;t triển &yacute; v&agrave; sử dụng từ ngữ ghi điểm cho IELTS Speaking</big></li>
+                                <li><big>Nắm vững v&agrave; ứng dụng từ vựng n&acirc;ng cao c&ugrave;ng&nbsp;cấu tr&uacute;c ghi điểm cho từng dạng b&agrave;i của IELTS Writing</big></li>
+                                <li><big>Tự tin đăng k&yacute; thi mục tiểu 6.0+</big></li>
+                            </ul>
+
+                            <p><big>3. TH&Ocirc;NG TIN KHO&Aacute; HỌC</big></p>
+
+                            <ul>
+                                <li><big>Thời lượng: 20 buổi</big></li>
+                                <li><big>Thời gian: 2 buổi/tuần; 2 giờ/buổi; 19.00-21.00 c&aacute;c buổi tối</big></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6 order-1">
+                            <img src="https://xuanphiielts.com/images/course_offlines/j5n7_image_cây-04.png" alt=""
+                                 width="100%" height="100%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    </section>
+    <section id="teacher">
+        <div class="container">
+            <h3 class="title-ss">Đội Ngũ Giảng Dạy</h3>
+            <div class="home-demo">
+                <div class="row">
+                    <div class="large-12 columns">
+
+                        <div class="owl-carousel">
+                            <div class="item container-image">
+
+                                <!--<img src="https://xuanphiielts.com/images/teachers/6iP5_image_n.png" style="width: 100%; height: 350px" alt=""-->
+                                <!--     class="image">-->
+                                <!--<div class="middle">-->
+                                <!--    <h2>Thầy Phạm Xuân Phi</h2>-->
+                                <!--    <span>Giảng viên</span>-->
+                                <!--    <br>-->
+                                <!--    IELTS 8.0 - Thạc sĩ đại học Southampton, UK - 5 năm kinh nghiệm - Moderator group Ielts Việt, Tự học Ielts 9.0-->
+                                <!--</div>-->
+                                <div class="doingu">
+                                    <div class="img-giaovien">
+                                        <img src="https://xuanphiielts.com/images/teachers/6iP5_image_n.png" style="width: 230px; height: 300px; border-bottom-right-radius: 70%;border-bottom-left-radius: 50% ;alt=" class="image">
+                                    </div>
+                                    <h3>Thầy Phạm Xuân Phi</h3>
+                                    <span>Giảng viên</span>
+                                    <span>IELTS 8.0 - Thạc sĩ đại học Southampton, UK - 5 năm kinh nghiệm - Moderator group Ielts Việt, Tự học Ielts 9.0</span>
+
+                                </div>
+
+                            </div>
+                            <div class="item container-image">
+
+                                <!--<img src="https://xuanphiielts.com/images/teachers/quJK_image_ư34r-01.png" style="width: 100%; height: 350px" alt=""-->
+                                <!--     class="image">-->
+                                <!--<div class="middle">-->
+                                <!--    <h2>Thầy Chris Revill</h2>-->
+                                <!--    <span>Giảng viên</span>-->
+                                <!--    <br>-->
+                                <!--    Tốt nghiệp Đại học Leeds, the UK - Kinh nghiệm 4 năm làm trainer tại Nottingham, the UK - Chứng chỉ giảng dạy tiếng Anh TESOL-->
+                                <!--</div>-->
+                                <div class="doingu">
+                                    <div class="img-giaovien">
+                                        <img src="https://xuanphiielts.com/images/teachers/quJK_image_ư34r-01.png" style="width: 230px; height: 300px; border-bottom-right-radius: 70%;border-bottom-left-radius: 50% ;alt=" class="image">
+                                    </div>
+                                    <h3>Thầy Chris Revill</h3>
+                                    <span>Giảng viên</span>
+                                    <span>Tốt nghiệp Đại học Leeds, the UK - Kinh nghiệm 4 năm làm trainer tại Nottingham, the UK - Chứng chỉ giảng dạy tiếng Anh TESOL</span>
+
+                                </div>
+
+                            </div>
+                            <div class="item container-image">
+
+                                <!--<img src="https://xuanphiielts.com/images/teachers/mJXl_image_ưerere-01.png" style="width: 100%; height: 350px" alt=""-->
+                                <!--     class="image">-->
+                                <!--<div class="middle">-->
+                                <!--    <h2>Thầy Harry Benjamin Fox</h2>-->
+                                <!--    <span>Giảng viên</span>-->
+                                <!--    <br>-->
+                                <!--    Tốt nghiệp Đại học HULL, the UK - Chứng chỉ giảng dạy tiếng Anh TESOL - Bề dày kinh nghiệm giảng dạy cho học sinh Việt Nam-->
+                                <!--</div>-->
+                                <div class="doingu">
+                                    <div class="img-giaovien">
+                                        <img src="https://xuanphiielts.com/images/teachers/mJXl_image_ưerere-01.png" style="width: 230px; height: 300px; border-bottom-right-radius: 70%;border-bottom-left-radius: 50% ;alt=" class="image">
+                                    </div>
+                                    <h3>Thầy Harry Benjamin Fox</h3>
+                                    <span>Giảng viên</span>
+                                    <span>Tốt nghiệp Đại học HULL, the UK - Chứng chỉ giảng dạy tiếng Anh TESOL - Bề dày kinh nghiệm giảng dạy cho học sinh Việt Nam</span>
+
+                                </div>
+
+                            </div>
+                            <div class="item container-image">
+
+                                <!--<img src="https://xuanphiielts.com/images/teachers/e9gj_image_Anh CÔng.png" style="width: 100%; height: 350px" alt=""-->
+                                <!--     class="image">-->
+                                <!--<div class="middle">-->
+                                <!--    <h2>Thầy Vũ Minh Công</h2>-->
+                                <!--    <span>Giảng viên</span>-->
+                                <!--    <br>-->
+                                <!--    7.5 IELTS (7.5 Speaking) - Có kinh nghiệm lâu năm trong việc giảng dạy học viên từ mất gốc-->
+                                <!--</div>-->
+                                <div class="doingu">
+                                    <div class="img-giaovien">
+                                        <img src="https://xuanphiielts.com/images/teachers/e9gj_image_Anh CÔng.png" style="width: 230px; height: 300px; border-bottom-right-radius: 70%;border-bottom-left-radius: 50% ;alt=" class="image">
+                                    </div>
+                                    <h3>Thầy Vũ Minh Công</h3>
+                                    <span>Giảng viên</span>
+                                    <span>7.5 IELTS (7.5 Speaking) - Có kinh nghiệm lâu năm trong việc giảng dạy học viên từ mất gốc</span>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+    </section>
+    <section id="khoahoc-now">
+        <div class="container">
+            <h3 class="title-ss">Khoá học đang tuyển sinh</h3>
+            <div class="home-demo">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="owl-carousel">
+                            <div class="item">
+
+                                <div class="teacher-infor">
+                                    <img src="https://xuanphiielts.com/images/course_enrolling/Rzpu62U_image_cây-01.png"
+                                         style="width: 100%; height: 300px" alt="" ;object-fit: cover;>
+                                    <div class="name-ts">
+                                        <h4>Lớp Rễ T11</h4>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="item">
+
+                                <div class="teacher-infor">
+                                    <img src="https://xuanphiielts.com/images/course_enrolling/Ek90hf3_image_cây-02.png"
+                                         style="width: 100%; height: 300px" alt="" ;object-fit: cover;>
+                                    <div class="name-ts">
+                                        <h4>Lớp Gốc T10 (đã full)</h4>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="item">
+
+                                <div class="teacher-infor">
+                                    <img src="https://xuanphiielts.com/images/course_enrolling/N7qq_image_cây-03.png"
+                                         style="width: 100%; height: 300px" alt="" ;object-fit: cover;>
+                                    <div class="name-ts">
+                                        <h4>Lớp Thân T9 (đã full)</h4>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="item">
+
+                                <div class="teacher-infor">
+                                    <img src="https://xuanphiielts.com/images/course_enrolling/fZac_image_cây-04.png"
+                                         style="width: 100%; height: 300px" alt="" ;object-fit: cover;>
+                                    <div class="name-ts">
+                                        <h4>Lớp Ngọn T9 (đã full)</h4>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="text-center">
+            <a target="_blank" class="btn btn-trinhdo" href="https://bit.ly/IELTSofflineXuanPhi">
+                Đăng ký kiểm tra trình
+                độ
+            </a>
+        </div>
+    </section>
+    <section class="section-7">
+        <div class="back-ground"></div>
+        <div class="container-fluid">
+            <div class="container danhgia">
+                <h3 class="title-ss" style="z-index : 20 ;position: relative;">
+                    Cảm nhận của học viên về Xuan Phi IeLTS
+                </h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="coment-box">
+                            <div id="style-4" class="comment-title">
+                                Hết một nửa chặng đường rồi mới viết tâm thư gửi thầy giáo đây
+                                Chả phải pr quảng cáo gì nhưng một câu thật lòng,việc mình lựa chọn học IELTS cùng thầy Phi thay vì các trung tâm nổi tiếng khác đến bây giờ phải khẳng định là quá đúng đi!
+                                Mình thì chẳng phải đứa lười đâu, toàn được thầy khen là chăm với ham học đấy, mà mỗi tội mắc cái tật “học trước quên sau”:)
+                                Thế mà thầy Phi chữa được luôn. Nhiều khi đi học rồi đi làm bận túi bụi nhưng mình cố sắp xếp để không nghỉ một buổi học nào.
+                                Không khí lớp học bao giờ cũng vui vẻ và phải nói là cực kì cực kì thân thiện, mình ít thấy giáo viên nào vừa tận tâm lại gần gũi với học viên như thế.
+                                Chưa bao giờ mình nghĩ mình có thể học và nhớ được 20- 30 từ mới một ngày, thế mà nhờ cách học qua ứng dụng Cram của thầy, đâu chỉ riêng mình, cả lớp đều nạp từ vựng ầm ầm.
+                                Mình còn nhớ hôm thầy giao thử thách “SPEED UP”, mình không phân vân giây nào mà đăng kí luôn, chắc bởi quyết định đúng đắn vậy mà giờ mình đã cải thiện rõ ràng không chỉ ngữ pháp – từ vựng mà còn kĩ năng mở rộng idea nữa.
+                                Chỉ biết cảm ơn thầy Phi và cũng cảm ơn chính mình vì đã có sự lựa chọn đúng đắn đến vậy ❤
+                            </div>
+                            <div class="coment-member">
+                                <div class="comment-avt">
+                                    <img src="https://xuanphiielts.com/images/student/GsuM_image_hv 1.png"
+                                         alt="">
+                                </div>
+                                <div class="coment-name">
+                                    <a href="">Kim Tuyến Trần</a> <br>
+                                    <span>Khóa Thân</span>
+                                    <div class="star">
+                                        <i class="fa fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="coment-box">
+                            <div id="style-4" class="comment-title">
+                                Mẹ bỉm sữa học tiếng anh!
+                                Sau khi được một người bạn giới thiệu, mình quyết định đăng kí học IELTS thầy Phi ( trên lớp vẫn hay gọi a Phi cho thân thương  :))).
+                                Mặc dù vẫn đang trong giai đoạn bỉm vắt vai, sữa ngập đầu nhưng nhờ phương pháp dạy của thầy Phi rất dễ hiểu, rõ ràng, nên mình nhớ ngay và còn nhớ rất lâu nữa. Tất cả kiến thức đều được thầy đúc kết lại dưới dạng công thức hoặc các bước làm bởi vậy mà dễ dàng áp dụng và không bị quên (cứ 1+1 =2 là nhớ ngay  :D)
+                                Dạy nhiều, ck thì hum nào cũng 10h tối mới về chả có tg học nên đành ngồi chơi Game trên Cram để học từ vựng của thầy Phi vậy- vừa giải trí vừa dễ nhớ. Đã thế, thỉnh thoảng đến lớp lại được nói chuyện với mấy anh chị nước ngoài siêu hài hước và vui tính. Đi học thật là vui  :D
+                                Cảm ơn a Phi đẹp zai  :))
+                            </div>
+                            <div class="coment-member">
+                                <div class="comment-avt">
+                                    <img src="https://xuanphiielts.com/images/student/nr8K_image_hv 3.png"
+                                         alt="">
+                                </div>
+                                <div class="coment-name">
+                                    <a href="">Hong Nguyen – Giảng viên ĐH ...</a> <br>
+                                    <span>Khoá Rễ</span>
+                                    <div class="star">
+                                        <i class="fa fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="coment-box">
+                            <div id="style-4" class="comment-title">
+                                Vừa hnao còn hoang mang sắp ra trường mà TA bập bẹ ntn thì phải làm sao , mà sau khi kết thúc lớp Thân + 1 chút cố gắng bản thân thì bây giờ speaking become easy than ever.
+                                Và đồng hành trong quá trình đó với bản thân là anh : Phạm Xuân Phi / Xuân Phi Ielts
+                                Lớp học luôn nhẹ nhàng , học như chơi nhưng thật sự hiệu quả.
+                                🚩Mỗi buổi speaking luôn có 2 giáo viên bản ngữ cùng practice và sửa pronunciation , được học cách tư duy , cách mở rộng về các phần trong bài ielts speaking
+                                🚩Listening thì chắc cũng chỉ cho section rồi nghe thôi nhỉ ? Đúng r , chỉ nghe thôi nhưng được hướng dẫn từ cách nghe transcipt từ những cái ending sound hay linking sound , tất cả đều được note lại và hướng dẫn nhiệt tình từ a Phi và bạn trợ giảng hiền như bụt . Ngoài ra listening ở lớp Thân còn có speed up , mng có thể nghe dictation mỗi ngày - điều này cải thiện trình độ rõ rệt sau 3 tuần luôn.
+                                🚩writting và reading cũng được hướng dẫn chi tiết và sát với bài ielts. Tuy nhiên 2 phần này hơi khó hơn so với 2 ký năng trên nên để dành ở cuối lớp Thân và lớp Ngọn , và cũng có speed up cho reading luôn ( mỗi ngày 50 từ vocab được chọn từ các section khó từ quyển cam 9-14)
+                                🔒Important thing: Anh giáo viên rất nhiệt tình và tâm huyết , sẵn sàng kèm thêm cho những ai cảm thấy kém , đuối hơn. Luôn lo lắng cho học sinh bị mất kiến thức . Cảm nhận của bản thân sau 2 năm lặn lội khắp cái thành phố Hà Nội học hết trung tâm nọ đến trung tâm kia , cũng ngốn kha khá tiền của phụ huynh thì mình cũng tìm được cái thang chắc chắn. Việc còn lại chỉ là nỗ lực của bản thân nữa thôi .
+                                Vậy còn băn khoăn vì chưa biết học TA ở đâu , lấy Ielts như thế nào ? Thì liên hệ ngay anh Phi nhé.
+                            </div>
+                            <div class="coment-member">
+                                <div class="comment-avt">
+                                    <img src="https://xuanphiielts.com/images/student/fsVc_image_hv 4.png"
+                                         alt="">
+                                </div>
+                                <div class="coment-name">
+                                    <a href="">Nguyen Van Tai</a> <br>
+                                    <span>Khóa Thân</span>
+                                    <div class="star">
+                                        <i class="fa fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                        <i class="fas fa-star star-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="lienhe">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-lg-6 col-sm-6 col-md-6">
+                    <h2>Liên hệ chúng tôi</h2>
+                    <iframe class="mt-4"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d232.7648721966503!2d105.80113455604116!3d21.023162768315245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab66238ab27d%3A0xc7bfc9a7a1a50e40!2zMTM2IENow7lhIEzDoW5nLCBMw6FuZyBUaMaw4bujbmcsIMSQ4buRbmcgxJBhLCBIw6AgTuG7mWksIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1570519260496!5m2!1sen!2s"
+                            width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
+                    <p style="line-height: 35px">
+                        <span>Địa chỉ : Tòa nhà Dream House, số 63, ngõ 136 Chùa Láng, Quận Đống Đa, Hà Nội</span><br>
+                        <span> Hotline: 0916300750</span><br>
+                        <span> Email: phungtruongmta@gmail.com</span><br>
+                    </p>
+                </div>
+                <div class="col-6 col-lg-6 col-sm-6 col-md-6">
+                    <h2 style="margin-left : 8px">Đăng ký để nhận ưu đãi sớm nhất</h2>
+                    <div class="form-dk">
+                        <form action="https://xuanphiielts.com/information" method="post">
+                            <input type="hidden" name="_token" value="czYBUu5yTJNAC78lShw1Sfli0wUKQ4KGgIyNATnb">                        <input type="text" name="name" required placeholder="Họ Và Tên" value="" />
+                            <input type="email" name="email" required placeholder="Nhập Email" value="" />
+                            <input type="text" name="phone" required placeholder="Nhập Số Điện Thoại" value="" />
+                            <textarea name="message" required id="" cols="15" rows="5"
+                                      placeholder="Để lại lời nhắn cho chúng tôi"></textarea>
+                            <input type="submit" value="GỬI ĐI">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script>
+    var owl = $('.owl-carousel');
+    owl.owlCarousel({
+        margin: 10,
+        loop: true,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 4
+            }
+        }
+    })
+
+</script>
+
+</html>
+

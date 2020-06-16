@@ -193,14 +193,16 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Client\Controllers\GioiThieuController.cs" />
+    <Compile Include="Areas\Client\Controllers\KhoaHocController.cs" />
+    <Compile Include="Areas\Client\Controllers\TrangChuController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admins\CategoryLibrarysController.cs" />
     <Compile Include="Controllers\Admins\IntroducesController.cs" />
     <Compile Include="Controllers\Admins\StaffsController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
-    <Compile Include="Controllers\Clients\GioiThieuController.cs" />
-    <Compile Include="Controllers\Clients\TrangChuController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExampleController.cs" />
     <Compile Include="Controllers\FormController.cs" />
@@ -8916,6 +8918,10 @@
     <Content Include="Asset\lib\fontawesome.5.7.2\webfonts\fa-solid-900.woff" />
     <Content Include="Asset\lib\fontawesome.5.7.2\webfonts\fa-solid-900.woff2" />
     <Content Include="Asset\lib\OwlCarousel2-2.3.4\README.md" />
+    <Content Include="Areas\Client\Views\web.config" />
+    <Content Include="Areas\Client\Views\KhoaHoc\Index.cshtml" />
+    <Content Include="Areas\Client\Views\TrangChu\Index.cshtml" />
+    <Content Include="Areas\Client\Views\GioiThieu\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -9017,16 +9023,15 @@
     <Content Include="Views\CategoryLibrarys\Edit.cshtml" />
     <Content Include="Views\CategoryLibrarys\Index.cshtml" />
     <Content Include="Views\CategoryLibrarys\Details.cshtml" />
-    <Content Include="Views\Client\Shared\banner1.cshtml" />
-    <Content Include="Views\Client\Shared\Error.cshtml" />
-    <Content Include="Views\Client\Shared\_LayoutFooter.cshtml" />
-    <Content Include="Views\Client\Shared\_LayoutHeader.cshtml" />
-    <Content Include="Views\Client\Shared\_LayoutMaster.cshtml" />
-    <Content Include="Views\TrangChu\Index.cshtml" />
-    <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\banner1.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_LayoutFooter.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_LayoutHeader.cshtml" />
+    <Content Include="Areas\Client\Views\Shared\_LayoutMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Client\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
