@@ -175,11 +175,6 @@ namespace coderush.Areas.Admins.Models.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<staff>()
-                .HasMany(e => e.courses)
-                .WithOptional(e => e.staff)
-                .HasForeignKey(e => e.staff_id);
-
-            modelBuilder.Entity<staff>()
                 .HasMany(e => e.teachers)
                 .WithOptional(e => e.staff)
                 .HasForeignKey(e => e.staff_id);
@@ -191,6 +186,12 @@ namespace coderush.Areas.Admins.Models.EF
             modelBuilder.Entity<teacher>()
                 .Property(e => e.te_image)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<teacher>()
+                .HasMany(e => e.courses)
+                .WithOptional(e => e.teacher)
+                .HasForeignKey(e => e.teacher_id)
+                .WillCascadeOnDelete();
         }
     }
 }

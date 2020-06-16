@@ -12,7 +12,6 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public staff()
         {
-            courses = new HashSet<course>();
             teachers = new HashSet<teacher>();
         }
 
@@ -52,9 +51,6 @@
         public DateTime? sta_created_at { get; set; }
         [Display(Name = "Ngày cập nhật")]
         public DateTime? sta_update_at { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<course> courses { get; set; }
 
         public virtual group_role group_role { get; set; }
 
