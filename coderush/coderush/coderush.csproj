@@ -53,6 +53,12 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -193,11 +199,32 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admins\AdminsAreaRegistration.cs" />
+    <Compile Include="Areas\Admins\Controllers\StaffsController.cs" />
+    <Compile Include="Areas\Admins\Models\DAO\GroupRoleDao.cs" />
+    <Compile Include="Areas\Admins\Models\DAO\StaffDao.cs" />
+    <Compile Include="Areas\Admins\Models\EF\blog.cs" />
+    <Compile Include="Areas\Admins\Models\EF\category_librarys.cs" />
+    <Compile Include="Areas\Admins\Models\EF\contact.cs" />
+    <Compile Include="Areas\Admins\Models\EF\course.cs" />
+    <Compile Include="Areas\Admins\Models\EF\course_customer.cs" />
+    <Compile Include="Areas\Admins\Models\EF\customer.cs" />
+    <Compile Include="Areas\Admins\Models\EF\group_role.cs" />
+    <Compile Include="Areas\Admins\Models\EF\image.cs" />
+    <Compile Include="Areas\Admins\Models\EF\introduce.cs" />
+    <Compile Include="Areas\Admins\Models\EF\library.cs" />
+    <Compile Include="Areas\Admins\Models\EF\DBIeltsContext.cs" />
+    <Compile Include="Areas\Admins\Models\EF\position.cs" />
+    <Compile Include="Areas\Admins\Models\EF\staff.cs" />
+    <Compile Include="Areas\Admins\Models\EF\teacher.cs" />
+    <Compile Include="Areas\Admins\Models\EF\ViewModel\GroupRoleViewModel.cs" />
+    <Compile Include="Areas\Admins\Models\EF\ViewModel\StaffViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admins\CategoryLibrarysController.cs" />
     <Compile Include="Controllers\Admins\CoursesController.cs" />
     <Compile Include="Controllers\Admins\IntroducesController.cs" />
     <Compile Include="Controllers\Admins\StaffsController.cs" />
+    <Compile Include="Controllers\Admins\TestController.cs" />
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\ChartController.cs" />
     <Compile Include="Controllers\Clients\GioiThieuController.cs" />
@@ -8364,6 +8391,7 @@
     <Content Include="Content\adminlte\plugins\timepicker\bootstrap-timepicker.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -8917,6 +8945,10 @@
     <Content Include="Asset\lib\fontawesome.5.7.2\webfonts\fa-solid-900.woff" />
     <Content Include="Asset\lib\fontawesome.5.7.2\webfonts\fa-solid-900.woff2" />
     <Content Include="Asset\lib\OwlCarousel2-2.3.4\README.md" />
+    <Content Include="Areas\Admins\Views\web.config" />
+    <Content Include="Areas\Admins\Views\Staffs\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\Staffs\Edit.cshtml" />
+    <Content Include="Areas\Admins\Views\Staffs\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -9028,11 +9060,12 @@
     <Content Include="Views\Client\Shared\_LayoutFooter.cshtml" />
     <Content Include="Views\Client\Shared\_LayoutHeader.cshtml" />
     <Content Include="Views\Client\Shared\_LayoutMaster.cshtml" />
-    <Content Include="Views\TrangChu\Index.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admins\Content\Photo\" />
+    <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

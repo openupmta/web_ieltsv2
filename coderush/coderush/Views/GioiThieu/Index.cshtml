@@ -1,0 +1,23 @@
+﻿@model coderush.Models.introduce
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Client/Shared/_LayoutMaster.cshtml";
+}
+
+<section class="course-1 py-5">
+    <div class="container-fluid">
+        <div class="container">
+            <h3 class="text-center border-bot">CÂU CHUYỆN VỀ T&T IELTS</h3>
+            <div class="d-flex flex-column course-content">
+                
+                @Html.Raw(ViewBag.model.in_content)
+                
+            </div>
+            <!--<h4 class="text-center border-bot">Đăng ký Học</h4>-->
+            <div style="text-align:center">
+                <a target="_blank" href="https://bit.ly/IELTSofflineXuanPhi" class="btn btn-warning mt-5">Đăng ký học ngay</a>
+            </div>
+            <h3 class="text-center border-bot"></h3>
+        </div>
+    </div>
+</section>
