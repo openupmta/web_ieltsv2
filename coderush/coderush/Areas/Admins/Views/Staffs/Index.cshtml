@@ -1,6 +1,6 @@
 ﻿@model PagedList.IPagedList<coderush.Areas.Admins.Models.EF.ViewModel.StaffViewModel>
 @using PagedList.Mvc
-
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Adminlte.cshtml";
 }
@@ -33,6 +33,12 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
+                        @using (Html.BeginForm("Index", "Staffs", FormMethod.Get))
+                        {
+                            <input type="text" name="search" placeholder="Search..." />
+                            <input type="submit" name="submit" value="Search"/>
+                        }
+
                         <table id="example1" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
@@ -55,7 +61,7 @@
                                         Ngày tạo
                                     </th>
 
-                                    <th></th>
+                                    <th>Hành động</th>
 
                                 </tr>
                             </thead>
@@ -76,21 +82,20 @@
                                             @Html.DisplayFor(modelItem => item.sta_username)
                                         </td>
 
-                                        <td><img height="50px" src="~/Areas/Admins/Content/Photo/@item.sta_image" /></td>
+                                        <td><img height="50px" src="~/Areas/Admins/Content/Photo/Staff/@item.sta_image" /></td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.sta_created_at)
                                         </td>
 
                                         <td>
-                                            <a href="@Url.Action("Edit", new { id = item.sta_id }) ">
+                                            <a href="@Url.Action("Edit","Staffs", new { id = item.sta_id }) ">
                                                 <span class="glyphicon glyphicon-edit">
                                                 </span>
                                             </a>
 
-                                            <a href="@Url.Action("Delete",new { id = item.sta_id })" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
+                                            <a href="@Url.Action("Delete","Staffs",new { id = item.sta_id })" onclick="return confirm('Bạn chắc chắn muốn xóa?')">
                                                 <span class="glyphicon glyphicon-trash"></span>
                                             </a>
-                                            |
 
                                         </td>
                                     </tr>
@@ -100,7 +105,7 @@
                         </table>
                         <div class="col-sm-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum }))
+                                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum, search = Request.QueryString["search"] }))
                             </div>
                         </div>
                     </div>
@@ -157,7 +162,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Content/adminlte/dist/js/demo.js"></script>
     <!-- page script -->
-    <script>
+    @*<script>
         $(function () {
             $('#example1').DataTable()
             $('#example2').DataTable({
@@ -168,5 +173,5 @@
                 'info': true,
                 'autoWidth': false
             })
-        })</script>
+        })</script>*@
 }

@@ -1,5 +1,6 @@
 ﻿using coderush.Areas.Admins.Models.EF;
 using coderush.Areas.Admins.Models.EF.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,26 +28,24 @@ namespace coderush.Areas.Admins.Models.DAO
         {
             return db.staffs.Single(i => i.sta_id == id);
         }
-        public List<StaffViewModel> GetAllSearch(int Pagenum, int PageSize)
+        public IEnumerable<StaffViewModel> GetAllSearch(int Pagenum, int PageSize,string search)
         {
-            //select sta.*, gr.gr_name
-            //from staffs as sta left join group_role as gr on sta.group_role_id = gr.gr_id
+            
 
-            var lst = db.Database.SqlQuery<StaffViewModel>("select sta.sta_email as sta_email, sta.sta_fullname as sta_fullname" +
-                ", sta.sta_username as sta_username,sta.sta_image as sta_image,sta_created_at as sta_created_at, gr.gr_name as gr_name" +
-                "from staffs sta left join group_role gr on sta.group_role_id = gr.gr_id").ToList();
-            //if (search != null)
-            //{
-            //    lst = lst.Where(x => x.sta_fullname.ToLower().Trim().Contains(search.ToLower().Trim())
-            //                    || x.sta_username.ToLower().Trim().Contains(search.ToLower().Trim())
-            //                    || x.sta_email.ToLower().Trim().Contains(search.ToLower().Trim())
-            //    ).ToList();
-            //}
-            //if(gr_id != 0)
-            //{
-            //    lst = lst.Where(x => x.group_role_id == gr_id).ToList();
-            //}
-            return lst.Skip((Pagenum - 1) * PageSize).Take(PageSize).ToList();
+            
+            var lst = db.Database.SqlQuery<StaffViewModel>("select sta.*,gr.gr_name as group_role_name" +
+                " from staffs as sta" +
+                " left join group_role as gr on sta.group_role_id = gr.gr_id").ToList(); 
+
+            if (search != null)
+            {
+                lst = lst.Where(x => x.sta_fullname.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.sta_username.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.sta_email.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.group_role_name.ToLower().Trim().Contains(search.ToLower().Trim())
+                ).ToList();
+            }
+            return lst.ToList().ToPagedList<StaffViewModel>(Pagenum, PageSize);
         }
 
         #endregion
