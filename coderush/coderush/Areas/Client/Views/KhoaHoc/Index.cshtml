@@ -45,7 +45,7 @@
             start();
         });
         var date = new Date();
-        var time = new Date('2020-05-12').getTime();
+        var time = new Date('2020-08-20').getTime();
         var distance = time - date.getTime();
         var d = Math.floor(distance / (1000 * 60 * 60 * 24)) + 1; //ngày
 
@@ -122,7 +122,7 @@
                 <div class="container">
                     <div class="logo" style="padding: 10px">
                         <a href="https://xuanphiielts.com">
-                            <img src="https://xuanphiielts.com/image/logo11.png" width="150px" alt="">
+                            <img src="https://xuanphiielts.com/image/logo11.png" width="100px" alt="">
                         </a>
                     </div>
                     <div class="row">
@@ -406,7 +406,7 @@
                 </div>
             </div>
 
-    </section>
+
     </section>
     <section id="teacher">
         <div class="container">
@@ -508,6 +508,7 @@
                 </div>
 
             </div>
+        </div>
     </section>
     <section id="khoahoc-now">
         <div class="container">
@@ -719,28 +720,29 @@
             </div>
         </div>
     </section>
+    <script>
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
+            margin: 10,
+            loop: true,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+
+    </script>
 </body>
 
-<script>
-    var owl = $('.owl-carousel');
-    owl.owlCarousel({
-        margin: 10,
-        loop: true,
-        nav: true,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 4
-            }
-        }
-    })
 
-</script>
 
 </html>
 

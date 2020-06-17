@@ -14,8 +14,8 @@ namespace coderush.Areas.Client.Controllers
         // GET: GioiThieu
         public ActionResult Index()
         {
-            ViewBag.model = db.introduces.FirstOrDefault();
-            return View("~/Views/GioiThieu/Index.cshtml");
+            //ViewBag.model = db.introduces.FirstOrDefault();
+            return View();
         }
     }
 }

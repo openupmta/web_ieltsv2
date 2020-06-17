@@ -199,6 +199,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admins\Controllers\CourseController.cs" />
+    <Compile Include="Areas\Admins\Models\DAO\CourseDao.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\GioiThieuController.cs" />
     <Compile Include="Areas\Client\Controllers\KhoaHocController.cs" />
@@ -9063,8 +9065,6 @@
     <Content Include="Areas\Client\Views\Shared\_LayoutMaster.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Areas\Client\Models\" />
     <Content Include="Views\Courses\Create.cshtml" />
     <Content Include="Views\Courses\Delete.cshtml" />
     <Content Include="Views\Courses\Details.cshtml" />
@@ -9080,6 +9080,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admins\Content\Photo\Staff\" />
+    <Folder Include="Areas\Admins\Views\Course\" />
+    <Folder Include="Areas\Client\Models\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>
   <ItemGroup>
