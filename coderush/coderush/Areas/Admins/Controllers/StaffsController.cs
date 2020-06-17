@@ -1,5 +1,6 @@
 ﻿using coderush.Areas.Admins.Models.DAO;
 using coderush.Areas.Admins.Models.EF;
+using coderush.Areas.Admins.Models.EF.ViewModel;
 using Common;
 using System;
 using System.Collections.Generic;
@@ -12,13 +13,14 @@ namespace coderush.Areas.Admins.Controllers
 {
     public class StaffsController : Controller
     {
-        public ActionResult Delete(int id)
+        public ActionResult Index(int PageNum = 1, int PageSize = 3, string search = null)
         {
-            StaffDao dao = new StaffDao();
-            dao.Delete(id);
-            return Redirect("~/Admin/Product/Index");
-        }
 
+            StaffDao dao = new StaffDao();
+            var lst = dao.GetAllSearch(PageNum, PageSize, search);
+
+            return View(lst);
+        }
         public ActionResult Create()
         {
             GroupRoleDao dao = new GroupRoleDao();
@@ -38,7 +40,7 @@ namespace coderush.Areas.Admins.Controllers
                     if (photo != null && photo.ContentLength > 0)
                     {
                         string image = String.Concat(sta.sta_username,photo.FileName);
-                        var path = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/"),
+                        var path = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/Staff/"),
                                                 System.IO.Path.GetFileName(image));
                         photo.SaveAs(path);
 
@@ -49,6 +51,7 @@ namespace coderush.Areas.Admins.Controllers
                         content = content.Replace("{{Password}}", sta.sta_password);
 
                         new MailHelper().SendMail(sta.sta_email, "Thông tin tài khoản", content);
+                        sta.sta_created_at = DateTime.Now;
                         dao.Create(sta);
                     }
                     return RedirectToAction("Index");
@@ -98,19 +101,20 @@ namespace coderush.Areas.Admins.Controllers
                         string image = String.Concat(sta.sta_username, photo.FileName);
                         if (!image.Equals(exists_sta.sta_image) )
                         {
-                            var image_old = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/"),
+                            var image_old = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/Staff/"),
                                                 System.IO.Path.GetFileName(exists_sta.sta_image));
                             if (System.IO.File.Exists(image_old))
                             {
                                 System.IO.File.Delete(image_old);
                             }
-                            var image_new = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/"),
+                            var image_new = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/Staff/"),
                                                 System.IO.Path.GetFileName(image));
 
 
                             photo.SaveAs(image_new);
                         }
                         sta.sta_image = image;
+                        sta.sta_update_at = DateTime.Now;
                         staDao.Update(sta);
                     }
                     else
@@ -135,10 +139,20 @@ namespace coderush.Areas.Admins.Controllers
             }
         }
 
-        public ActionResult Index(int PageNum = 1, int PageSize =10)
+        
+        public ActionResult Delete(int id)
         {
             StaffDao dao = new StaffDao();
-            return View(dao.GetAllSearch(PageNum,PageSize));
+            staff exists_sta = dao.GetById(id);
+
+            var image_old = Path.Combine(Server.MapPath("~/Areas/Admins/Content/Photo/Staff/"),
+                                System.IO.Path.GetFileName(exists_sta.sta_image));
+            if (System.IO.File.Exists(image_old))
+            {
+                System.IO.File.Delete(image_old);
+            }
+            dao.Delete(id);
+            return RedirectToAction("Index");
         }
         #region[Check Duplicate]
 
