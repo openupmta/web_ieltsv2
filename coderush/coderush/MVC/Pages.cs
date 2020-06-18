@@ -7,6 +7,10 @@ namespace lte.MVC
 {
     public static class Pages
     {
+        public static class Staffs
+        {
+            public const string Index = "/Admins/Staffs/Index";
+        }
         public static class Dashbaordv1
         {
             public const string Url = "/Dashboard/Dashboardv1";

@@ -5,6 +5,15 @@
     Layout = "~/Views/Shared/_Adminlte.cshtml";
 }
 
+<style>
+    .timkiem{
+        position: relative;
+    left: 790px;
+    }
+    .search_button{
+        float:right;
+    }
+</style>
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -25,7 +34,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Danh sách nhân viên </h3>
+                        
                         <button type="button" class="btn btn-warning" style="float:right">
                             @Html.ActionLink("Thêm nhân sự ", "Create", "staffs")
                         </button>
@@ -35,8 +44,20 @@
                     <div class="box-body">
                         @using (Html.BeginForm("Index", "Staffs", FormMethod.Get))
                         {
-                            <input type="text" name="search" placeholder="Search..." />
-                            <input type="submit" name="submit" value="Search"/>
+                            <input class="timkiem" type="text" name="search" placeholder="Search..." />
+                            <select name="PageSize" aria-controls="example1" class="form-control input-sm" style="float:left; width:6%">
+                                
+                                @for (int i = 0; i<= 25; i+= 5)
+                                {
+                                    var select = "";
+                                    if (i == ViewBag.PageSize)
+                                    {
+                                        select = "selected";
+                                    }
+                                    <option @select value="@i">@i</option>
+                                }
+                            </select>
+                            <input class="search_button" type="submit" name="submit" value="Search" />
                         }
 
                         <table id="example1" class="table table-bordered table-hover">
@@ -82,7 +103,7 @@
                                             @Html.DisplayFor(modelItem => item.sta_username)
                                         </td>
 
-                                        <td><img height="50px" src="~/Areas/Admins/Content/Photo/Staff/@item.sta_image" /></td>
+                                        <td><img class="img-circle" alt="User Image" height="50px" src="~/Areas/Admins/Content/Photo/Staff/@item.sta_image" /></td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.sta_created_at)
                                         </td>
@@ -105,7 +126,7 @@
                         </table>
                         <div class="col-sm-7">
                             <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
-                                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum, search = Request.QueryString["search"] }))
+                                @Html.PagedListPager(Model, PageNum => Url.Action("Index", new { PageNum, search = Request.QueryString["search"], PageSize = Request.QueryString["PageSize"] }))
                             </div>
                         </div>
                     </div>
