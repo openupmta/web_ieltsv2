@@ -13,20 +13,26 @@ namespace coderush.Areas.Admins.Controllers
 {
     public class StaffsController : Controller
     {
-        public ActionResult Index(int PageNum = 1, int PageSize = 3, string search = null)
+        #region["Search"]
+        [Authorize]
+        public ActionResult Index(int PageNum = 1, int PageSize = 5, string search = null)
         {
-
+            ViewBag.PageSize = PageSize;
             StaffDao dao = new StaffDao();
             var lst = dao.GetAllSearch(PageNum, PageSize, search);
 
             return View(lst);
         }
+        #endregion
+        #region["Create"]
+        [Authorize]
         public ActionResult Create()
         {
             GroupRoleDao dao = new GroupRoleDao();
             ViewBag.lst_gr = dao.GetAll();
             return View();
         }
+        [Authorize]
         [HttpPost]
         public ActionResult Create(staff sta, HttpPostedFileBase photo)
         {
@@ -68,7 +74,9 @@ namespace coderush.Areas.Admins.Controllers
                 return View(sta);
             }
         }
-
+        #endregion
+        #region["Edit"]
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             StaffDao staDAo = new StaffDao();
@@ -85,7 +93,7 @@ namespace coderush.Areas.Admins.Controllers
             ViewBag.lst_gr = grDao.GetAll();
             return View(staff);
         }
-
+        [Authorize]
         [HttpPost]
         public ActionResult Edit(staff sta, HttpPostedFileBase photo)
         {
@@ -138,8 +146,9 @@ namespace coderush.Areas.Admins.Controllers
                 return View(sta);
             }
         }
-
-        
+        #endregion
+        #region["Delete"]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             StaffDao dao = new StaffDao();
@@ -154,6 +163,7 @@ namespace coderush.Areas.Admins.Controllers
             dao.Delete(id);
             return RedirectToAction("Index");
         }
+        #endregion
         #region[Check Duplicate]
 
         public JsonResult ExsitsUserName(string sta_username, int? sta_id)

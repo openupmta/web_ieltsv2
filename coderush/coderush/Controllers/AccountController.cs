@@ -114,7 +114,7 @@ namespace coderush.Controllers
 
                 //Save forgery
                 AntiForgeryConfig.UniqueClaimTypeIdentifier = ClaimTypes.Name;
-                return RedirectToAction("Index", "Staffs"); // auth succeed 
+                return RedirectToAction("Index", "Staffs",new { area="Admins"}); // auth succeed 
             }
             // invalid username or password
             ModelState.AddModelError("", "invalid username or password");
@@ -417,12 +417,10 @@ namespace coderush.Controllers
 
         //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
-        {
+        { 
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         //
