@@ -201,6 +201,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admins\Controllers\CourseController.cs" />
     <Compile Include="Areas\Admins\Models\DAO\CourseDao.cs" />
+    <Compile Include="Areas\Admins\Models\DAO\TeacherDao.cs" />
+    <Compile Include="Areas\Admins\Models\EF\ViewModel\CourseViewModel.cs" />
+    <Compile Include="Areas\Admins\Models\EF\ViewModel\TeacherViewModel.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="Areas\Client\Controllers\GioiThieuController.cs" />
     <Compile Include="Areas\Client\Controllers\KhoaHocController.cs" />
@@ -274,6 +277,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admins\Content\Photo\Course\23897395_1437484096368368_1974750778_o.png" />
     <Content Include="Asset\alertify\alertify.bootstrap.css" />
     <Content Include="Asset\alertify\alertify.core.css" />
     <Content Include="Asset\alertify\alertify.default.css" />
@@ -8957,6 +8961,9 @@
     <Content Include="Areas\Admins\Views\Staffs\Create.cshtml" />
     <Content Include="Areas\Admins\Views\Staffs\Edit.cshtml" />
     <Content Include="Areas\Admins\Views\Staffs\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\Course\Index.cshtml" />
+    <Content Include="Areas\Admins\Views\Course\Create.cshtml" />
+    <Content Include="Areas\Admins\Views\Course\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -9080,7 +9087,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admins\Content\Photo\Staff\" />
-    <Folder Include="Areas\Admins\Views\Course\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

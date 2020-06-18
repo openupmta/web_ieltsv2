@@ -1,4 +1,6 @@
 ﻿using coderush.Areas.Admins.Models.EF;
+using coderush.Areas.Admins.Models.EF.ViewModel;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,57 +26,55 @@ namespace coderush.Areas.Admins.Models.DAO
         }
         public course GetById(int? id)
         {
-            return db.courses.Single(i => i.sta_id == id);
+            return db.courses.Single(i => i.co_id == id);
         }
-        public List<courseViewModel> GetAllSearch(int Pagenum, int PageSize)
+        public IEnumerable<CourseViewModel> GetAllSearch(int Pagenum, int PageSize, string search)
         {
-            //select sta.*, gr.gr_name
-            //from courses as sta left join group_role as gr on sta.group_role_id = gr.gr_id
 
-            var lst = db.Database.SqlQuery<courseViewModel>("select sta.sta_email as sta_email, sta.sta_fullname as sta_fullname" +
-                ", sta.sta_username as sta_username,sta.sta_image as sta_image,sta_created_at as sta_created_at, gr.gr_name as gr_name" +
-                "from courses sta left join group_role gr on sta.group_role_id = gr.gr_id").ToList();
-            //if (search != null)
-            //{
-            //    lst = lst.Where(x => x.sta_fullname.ToLower().Trim().Contains(search.ToLower().Trim())
-            //                    || x.sta_username.ToLower().Trim().Contains(search.ToLower().Trim())
-            //                    || x.sta_email.ToLower().Trim().Contains(search.ToLower().Trim())
-            //    ).ToList();
-            //}
-            //if(gr_id != 0)
-            //{
-            //    lst = lst.Where(x => x.group_role_id == gr_id).ToList();
-            //}
-            return lst.Skip((Pagenum - 1) * PageSize).Take(PageSize).ToList();
+            var lst = db.Database.SqlQuery<CourseViewModel>("select co.*,te.te_name as teacher_name" +
+                " from course as co" +
+                " left join teachers as te on co.teacher_id = te.te_id").ToList();
+
+            if (search != null)
+            {
+                lst = lst.Where(x => x.co_name.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.co_content.ToLower().Trim().Contains(search.ToLower().Trim())
+                                || x.teacher_name.ToLower().Trim().Contains(search.ToLower().Trim())
+                ).ToList();
+            }
+            return lst.ToList().ToPagedList<CourseViewModel>(Pagenum, PageSize);
         }
 
         #endregion
         #region["CRUD"]
-        public void Create(course sta)
+        public void Create(course co)
         {
-            db.courses.Add(sta);
+            db.courses.Add(co);
             db.SaveChanges();
         }
-        public void Update(course sta)
+        public void Update(course cou)
         {
-            course course = GetById(sta.sta_id);
+            course course = GetById(cou.co_id);
             if (course != null)
             {
-                course.group_role_id = sta.group_role_id;
-                course.sta_email = sta.sta_email;
-                course.sta_fullname = sta.sta_fullname;
-                course.sta_password = sta.sta_password;
-                course.sta_username = sta.sta_username;
-                course.sta_update_at = sta.sta_update_at;
+                course.teacher_id = cou.teacher_id;
+                course.co_name = cou.co_name;
+                course.co_image = cou.co_image;
+                course.co_price = cou.co_price;
+                course.co_content = cou.co_content;
+                course.co_status = cou.co_status;
+                course.co_type = cou.co_type;
+                course.co_updated_at = cou.co_updated_at;
+
                 db.SaveChanges();
             }
         }
         public int Delete(int id)
         {
-            course sta = db.courses.Find(id);
-            if (sta != null)
+            course cou = db.courses.Find(id);
+            if (cou != null)
             {
-                db.courses.Remove(sta);
+                db.courses.Remove(cou);
                 return db.SaveChanges();
             }
             else
@@ -82,21 +82,21 @@ namespace coderush.Areas.Admins.Models.DAO
         }
         #endregion
         #region [Check_Duplicate]
-        public bool Check_UserName(string name, int? sta_id = null)
+        public bool Check_CourseName(string name, int? cou_id = null)
         {
             bool results = true;
-            if (sta_id == null)
+            if (cou_id == null)
             {
-                var user = db.courses.Where(x => x.sta_username.Trim().ToLower().Equals(name.Trim().ToLower())).FirstOrDefault();
+                var user = db.courses.Where(x => x.co_name.Trim().ToLower().Equals(name.Trim().ToLower())).FirstOrDefault();
                 if (user != null) results = true;
                 else results = false;
             }
             else
             {
                 List<course> list_course = db.courses.ToList();
-                course temp = db.courses.Find(sta_id);
-                list_course.Remove(temp);
-                bool res = list_course.Exists(x => x.sta_fullname.Trim().ToLower().Equals(name.Trim().ToLower()));
+                course temp = db.courses.Find(cou_id);
+                list_course.Remove(temp); //???????????????????????????????????????????????????????????????????????????????
+                bool res = list_course.Exists(x => x.co_name.Trim().ToLower().Equals(name.Trim().ToLower()));
                 results = res;
             }
             return results;

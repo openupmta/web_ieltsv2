@@ -18,7 +18,7 @@ namespace coderush.Areas.Admins.Models.EF.ViewModel
         public string sta_image { get; set; }
 
         public DateTime? sta_created_at { get; set; }
-
+        
         public DateTime? sta_update_at { get; set; }
 
     }
