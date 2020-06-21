@@ -35,7 +35,7 @@ namespace coderush.Areas.Admins.Models.DAO
             
             var lst = db.Database.SqlQuery<StaffViewModel>("select sta.*,gr.gr_name as group_role_name" +
                 " from staffs as sta" +
-                " left join group_role as gr on sta.group_role_id = gr.gr_id").ToList(); 
+                " left join group_role as gr on sta.group_role_id = gr.gr_id order by sta.sta_created_at desc`").ToList(); 
 
             if (search != null)
             {
@@ -43,7 +43,7 @@ namespace coderush.Areas.Admins.Models.DAO
                                 || x.sta_username.ToLower().Trim().Contains(search.ToLower().Trim())
                                 || x.sta_email.ToLower().Trim().Contains(search.ToLower().Trim())
                                 || x.group_role_name.ToLower().Trim().Contains(search.ToLower().Trim())
-                ).ToList();
+                ).OrderByDescending(x=> x.sta_created_at).ToList();
             }
             return lst.ToList().ToPagedList<StaffViewModel>(Pagenum, PageSize);
         }
@@ -62,6 +62,7 @@ namespace coderush.Areas.Admins.Models.DAO
             {
                 staff.group_role_id = sta.group_role_id;
                 staff.sta_email = sta.sta_email;
+                staff.sta_image = sta.sta_image;
                 staff.sta_fullname = sta.sta_fullname;
                 staff.sta_password = sta.sta_password;
                 staff.sta_username = sta.sta_username;
