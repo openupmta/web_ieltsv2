@@ -52,7 +52,7 @@ namespace coderush.Areas.Admins.Controllers
 
                         sta.sta_image = image;
                         //Mail 
-                        string content = System.IO.File.ReadAllText("D:/Ki2Nam3/CNWeb/web_ieltsv2/coderush/Common/Template/sendmail.html");
+                        string content = System.IO.File.ReadAllText("D:/Kì 2 Năm 3/CNWEB/web_ieltsv2/coderush/Common/Template/sendmail.html");
                         content = content.Replace("{{Username}}", sta.sta_username);
                         content = content.Replace("{{Password}}", sta.sta_password);
 

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace coderush.Controllers.Clients
+namespace coderush.Areas.Client.Controllers
 {
     public class TrangChuController : Controller
     {
-        // GET: TrangChu
+        // GET: Client/TrangChu
         public ActionResult Index()
         {
             return View();
