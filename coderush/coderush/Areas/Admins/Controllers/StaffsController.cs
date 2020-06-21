@@ -57,9 +57,14 @@ namespace coderush.Areas.Admins.Controllers
                         content = content.Replace("{{Password}}", sta.sta_password);
 
                         new MailHelper().SendMail(sta.sta_email, "Thông tin tài khoản", content);
-                        sta.sta_created_at = DateTime.Now;
-                        dao.Create(sta);
+                       
                     }
+                    else
+                    {
+                        sta.sta_image = "tienmta7.png";
+                    }
+                    sta.sta_created_at = DateTime.Now;
+                    dao.Create(sta);
                     return RedirectToAction("Index");
                 }
                 catch(Exception ex)
